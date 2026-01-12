@@ -555,8 +555,21 @@ a {
 }
 
 .skill-icon {
-    font-size: 3rem;
     margin-bottom: var(--spacing-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-icon img {
+    width: 48px;
+    height: 48px;
+    color: var(--color-primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-category:hover .skill-icon img {
+    transform: scale(1.15);
 }
 
 .skill-category h3 {
@@ -1088,9 +1101,21 @@ a {
 }
 
 .learning-icon {
-    font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.learning-icon img {
+    width: 48px;
+    height: 48px;
+    color: var(--color-primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.learning-card:hover .learning-icon img {
+    transform: scale(1.1);
 }
 
 .learning-title {
