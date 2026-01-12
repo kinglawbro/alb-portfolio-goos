@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = link.getAttribute('href');
             if (href !== '#') {
                 e.preventDefault();
-                const target = document.querySelector(href);
+                // Strip the # and use getElementById for safe DOM access
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -145,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const bar = entry.target;
-                const width = bar.style.width;
+                // Get width from inline style, computed style, or data attribute
+                const width = bar.style.width || window.getComputedStyle(bar).width || bar.getAttribute('data-width') || '0%';
                 bar.style.width = '0';
                 setTimeout(() => {
                     bar.style.width = width;
@@ -166,31 +169,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const createMobileMenu = () => {
         const nav = document.querySelector('.main-nav');
         const navLinks = document.querySelector('.nav-links');
+        const existingToggle = document.querySelector('.menu-toggle');
 
-        if (window.innerWidth <= 768 && !document.querySelector('.menu-toggle')) {
-            const menuToggle = document.createElement('button');
-            menuToggle.classList.add('menu-toggle');
-            menuToggle.innerHTML = '☰';
-            menuToggle.setAttribute('aria-label', 'Toggle menu');
+        if (window.innerWidth <= 768) {
+            // Only create if it doesn't already exist
+            if (!existingToggle) {
+                const menuToggle = document.createElement('button');
+                menuToggle.classList.add('menu-toggle');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-label', 'Toggle menu');
 
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
 
-            nav.querySelector('.nav-container').insertBefore(menuToggle, navLinks);
+                nav.querySelector('.nav-container').insertBefore(menuToggle, navLinks);
+            }
+        } else {
+            // Remove toggle if screen is wider than 768px
+            if (existingToggle) {
+                existingToggle.remove();
+                // Also remove active class from navLinks if present
+                navLinks.classList.remove('active');
+            }
         }
     };
 
     // Use debounce to prevent memory leak from resize listener
     let resizeTimeout;
+    let resizeListenerAdded = false;
     const handleResize = () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(createMobileMenu, 150);
     };
 
     createMobileMenu();
-    window.addEventListener('resize', handleResize);
+
+    // Only add resize listener once to prevent memory leak
+    if (!resizeListenerAdded) {
+        window.addEventListener('resize', handleResize);
+        resizeListenerAdded = true;
+    }
 
     // Enhanced tag hover effects
     const tags = document.querySelectorAll('.tag, .tech-tag, .skill-pill, .interest-tag');

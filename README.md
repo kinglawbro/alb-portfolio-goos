@@ -27,7 +27,6 @@ This is the personal portfolio website. The site showcases professional experien
 ```
 portfolio-files/
 ├── assets/                       # Shared assets directory
-│   └── site.webmanifest         # PWA manifest
 ├── public/                       # Firebase deployment directory
 │   ├── index.html               # Home/Hero page
 │   ├── experience.html          # Work experience timeline
@@ -37,8 +36,6 @@ portfolio-files/
 │   ├── styles.css               # Main stylesheet
 │   ├── script.js                # Interactive functionality
 │   └── assets/                  # Symlink to ../assets
-├── styles.css                    # Development stylesheet
-├── script.js                     # Development JavaScript
 ├── firebase.json                 # Firebase configuration
 └── .firebaserc                   # Firebase project settings
 ```
