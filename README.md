@@ -64,25 +64,6 @@ portfolio-files/
   - Vaultwarden (Password management)
   - Homelab Infrastructure (Complete setup)
 
-## Local Development
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd 2026-files-static
-```
-
-2. Open `index.html` in your browser or use a local server:
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx http-server
-```
-
-3. Navigate to `http://localhost:8000`
-
 ## Deployment
 
 This site is deployed using Firebase Hosting.
