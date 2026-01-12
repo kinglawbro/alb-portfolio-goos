@@ -20,27 +20,27 @@ This is the personal portfolio website. The site showcases professional experien
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
 - **Hosting**: Firebase Hosting
 - **Fonts**: Google Fonts (Crimson Pro, DM Sans)
-- **Icons**: Inline SVG
+- **Icons**: Custom SVG assets (13 professional icons)
 
 ## Project Structure
 
 ```
-2026-files-static/
-├── index.html              # Home/Hero page
-├── experience.html         # Work experience timeline
-├── projects.html           # Technical projects showcase
-├── certifications.html     # Credentials & learning goals
-├── styles.css              # Main stylesheet
-├── script.js               # Interactive functionality
-├── assets/                 # Images, icons, and manifest
-│   ├── headshot_crop.png
-│   ├── favicon-16x16.png
-│   ├── android-chrome-*.png
-│   ├── apple-touch-icon.png
-│   └── site.webmanifest
-├── public/                 # Firebase deployment directory
-├── firebase.json           # Firebase configuration
-└── .firebaserc             # Firebase project settings
+portfolio-files/
+├── assets/                       # Shared assets directory
+│   └── site.webmanifest         # PWA manifest
+├── public/                       # Firebase deployment directory
+│   ├── index.html               # Home/Hero page
+│   ├── experience.html          # Work experience timeline
+│   ├── projects.html            # Technical projects showcase
+│   ├── certifications.html      # Credentials & learning goals
+│   ├── 404.html                 # Custom 404 error page
+│   ├── styles.css               # Main stylesheet
+│   ├── script.js                # Interactive functionality
+│   └── assets/                  # Symlink to ../assets
+├── styles.css                    # Development stylesheet
+├── script.js                     # Development JavaScript
+├── firebase.json                 # Firebase configuration
+└── .firebaserc                   # Firebase project settings
 ```
 
 ## Key Sections
@@ -63,12 +63,6 @@ This is the personal portfolio website. The site showcases professional experien
   - Nextcloud (Cloud storage)
   - Vaultwarden (Password management)
   - Homelab Infrastructure (Complete setup)
-
-### Certifications
-- AWS Certified Cloud Practitioner
-- Microsoft Azure AI Fundamentals
-- Google Cybersecurity Certificate
-- Current learning roadmap (DevOps, Security, Cloud)
 
 ## Local Development
 
