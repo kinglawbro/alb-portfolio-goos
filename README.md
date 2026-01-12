@@ -26,7 +26,6 @@ This is the personal portfolio website. The site showcases professional experien
 
 ```
 portfolio-files/
-├── assets/                       # Shared assets directory
 ├── public/                       # Firebase deployment directory
 │   ├── index.html               # Home/Hero page
 │   ├── experience.html          # Work experience timeline
