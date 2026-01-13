@@ -992,6 +992,15 @@ a {
 
 .badge-icon {
     font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-icon img {
+    width: 48px;
+    height: 48px;
+    filter: brightness(0) invert(1);
 }
 
 .cert-title {
