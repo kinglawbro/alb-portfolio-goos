@@ -1,6 +1,8 @@
 {
   "name": "Professional Portfolio",
   "short_name": "My Portfolio",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/assets/android-chrome-192x192.png",

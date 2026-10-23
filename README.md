@@ -20,12 +20,12 @@ This is the personal portfolio website. The site showcases professional experien
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
 - **Hosting**: Firebase Hosting
 - **Fonts**: Google Fonts (Crimson Pro, DM Sans)
-- **Icons**: Custom SVG assets (13 professional icons)
+- **Icons**: Custom SVG assets (16 professional icons)
 
 ## Project Structure
 
 ```
-portfolio-files/
+alb-portfolio-goos/
 ├── public/                       # Firebase deployment directory
 │   ├── index.html               # Home/Hero page
 │   ├── experience.html          # Work experience timeline
@@ -34,8 +34,9 @@ portfolio-files/
 │   ├── 404.html                 # Custom 404 error page
 │   ├── styles.css               # Main stylesheet
 │   ├── script.js                # Interactive functionality
-│   └── assets/                  # Symlink to ../assets
-├── firebase.json                 # Firebase configuration
+│   └── assets/                  # Images, favicons, web manifest
+│       └── icons/               # SVG icons
+├── firebase.json                 # Hosting config: clean URLs, security + cache headers
 └── .firebaserc                   # Firebase project settings
 ```
 
@@ -48,7 +49,7 @@ portfolio-files/
 - Social links (LinkedIn, GitHub, Medium)
 
 ### Experience
-- Interactive timeline of 4 key positions
+- Interactive timeline of 5 key positions
 - Skills overview across 8 technical categories
 - Detailed responsibilities and achievements
 
@@ -80,9 +81,15 @@ npm install -g firebase-tools
 firebase login
 ```
 
-3. Deploy to Firebase:
+3. Preview locally (serves `public/` with the same headers and clean URLs as production):
 ```bash
-firebase deploy
+firebase emulators:start --only hosting
+```
+Then open http://localhost:5000. Links use clean URLs (`/experience`), so open the site through the emulator rather than as local files.
+
+4. Deploy to Firebase:
+```bash
+firebase deploy --only hosting
 ```
 
 The site will be deployed from the `public/` directory.
@@ -91,9 +98,9 @@ The site will be deployed from the `public/` directory.
 
 - **firebase.json** - Firebase hosting configuration
 - **.firebaserc** - Firebase project settings
-- **.hintrc** - HTMLHint validation rules
+- **.hintrc** - webhint validation rules
 - **.vscode/launch.json** - VS Code debugger configuration
-- **site.webmanifest** - PWA manifest for mobile installation
+- **public/assets/site.webmanifest** - Web app manifest for install-to-home-screen
 
 ## Code Quality
 
@@ -101,6 +108,8 @@ The site will be deployed from the `public/` directory.
 - CSS Variables for consistent theming
 - Modern JavaScript with no external dependencies
 - Progressive enhancement approach
+- Security headers (CSP, nosniff, referrer policy) set in `firebase.json`
+- Respects `prefers-reduced-motion`
 - Mobile-first responsive design
 
 ## Browser Support
@@ -116,7 +125,7 @@ The site will be deployed from the `public/` directory.
 - Zero external JavaScript libraries
 - Optimized asset loading
 - Efficient CSS with variable reuse
-- Responsive images
+- Compressed WebP headshot with explicit dimensions
 - Fast initial page load
 
 ## License
