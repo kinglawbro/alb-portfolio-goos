@@ -18,9 +18,16 @@
         });
 
         // Close the menu when returning to desktop width
-        window.matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+        const desktopQuery = window.matchMedia('(min-width: 769px)');
+        const onDesktopChange = (e) => {
             if (e.matches) setMenuOpen(false);
-        });
+        };
+        // Safari 13 and older only support the deprecated addListener
+        if (desktopQuery.addEventListener) {
+            desktopQuery.addEventListener('change', onDesktopChange);
+        } else {
+            desktopQuery.addListener(onDesktopChange);
+        }
 
         // Close the menu with Escape
         document.addEventListener('keydown', (e) => {
