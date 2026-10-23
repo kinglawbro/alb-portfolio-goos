@@ -31,6 +31,11 @@
         });
     }
 
+    // Build email links at runtime so the address isn't in the page source for scrapers
+    document.querySelectorAll('a[data-email-user]').forEach((link) => {
+        link.href = `mailto:${link.dataset.emailUser}@${link.dataset.emailDomain}`;
+    });
+
     // Fade-in on scroll, skipped for users who prefer reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealItems = document.querySelectorAll(
